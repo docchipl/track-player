@@ -1,0 +1,33 @@
+{
+  "name": "@docchi/cda-checking",
+  "version": "1.0.0",
+  "description": "Simple checking package, if cda video is deleted or available",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/docchipl/cda-checking.git"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "jsdom": "^20.0.0",
+    "unraw": "^2.0.1"
+  },
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/docchipl/cda-checking/issues"
+  },
+  "homepage": "https://github.com/docchipl/cda-checking#readme",
+  "keywords": [
+    "anime",
+    "poland",
+    "cda",
+    "docchi",
+    "pl",
+    "napisy"
+  ],
+  "author": "3xanax",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
