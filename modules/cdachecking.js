@@ -29,17 +29,25 @@ function CDAChecking (id){
         }
       }).catch(err => {
         const dom = new JSDOM(err.response.data, { virtualConsole });
-        const items = dom.window.document.querySelector('body p').textContent;
+        const items = dom.window.document.querySelector('body p');
 
-        if(items.includes('usunięty')){
-          return ({
-            status: 410,
-            message: "Source removed by administrators"
-          })
+        if(items){
+          if(items.textContent.includes('usunięty')){
+            return ({
+              status: 410,
+              message: "Source removed by administrators"
+            })
+          }else{
+            return ({
+              status: 500,
+              message: "Something went wrong!"
+            })
+          } 
         }else{
           return ({
             status: 500,
-            message: "Something went wrong!"
+            message: "Something went wrong!",
+            message_extra: "Skip this player or try again in couple seconds."
           })
         }
       });

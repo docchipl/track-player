@@ -1,6 +1,6 @@
 {
   "name": "@docchi/cda-checking",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple checking package, if cda video is deleted or available",
   "main": "index.js",
   "repository": {
@@ -26,8 +26,5 @@
     "napisy"
   ],
   "author": "3xanax",
-  "license": "MIT",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  "license": "MIT"
 }
