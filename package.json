@@ -1,6 +1,6 @@
 {
   "name": "@docchi/cda-checking",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Simple checking package, if cda video is deleted or available",
   "main": "index.js",
   "repository": {
