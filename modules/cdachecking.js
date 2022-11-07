@@ -15,6 +15,9 @@ function CDAChecking (id){
         }
       }).then(function (response) {
         const dom = new JSDOM(response.data, { virtualConsole });
+
+        if(err.response && !err.response.data) return({ status: 429,message: "Too Many Requests!"})
+        
         const items = dom.window.document.querySelector('h1.title a').textContent;
         if(items){
           return ({
