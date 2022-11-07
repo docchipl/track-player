@@ -28,6 +28,8 @@ function CDAChecking (id){
           })
         }
       }).catch(err => {
+        if(!err.response.data) return({ status: 429,message: "Too Many Requests!"})
+
         const dom = new JSDOM(err.response.data, { virtualConsole });
         const items = dom.window.document.querySelector('body p');
 
