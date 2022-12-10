@@ -31,7 +31,7 @@ function CDAChecking (id){
           })
         }
       }).catch(err => {
-        if(err.response && !err.response.data || !err.response.data || !err.response)  return({ status: 429, message: "Too Many Requests!"})
+        if(!err.response || err.response && !err.response.data || !err.response.data)  return({ status: 429, message: "Too Many Requests!"})
 
         const dom = new JSDOM(err.response.data, { virtualConsole });
         const items = dom.window.document.querySelector('body p');
