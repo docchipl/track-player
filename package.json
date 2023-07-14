@@ -1,11 +1,11 @@
 {
-  "name": "@docchi/cda-checking",
-  "version": "1.0.7",
+  "name": "@docchi/players-checking",
+  "version": "1.0.8",
   "description": "Simple checking package, if cda video is deleted or available",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/docchipl/cda-checking.git"
+    "url": "git+https://github.com/docchipl/players-checking.git"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -14,9 +14,9 @@
   },
   "type": "module",
   "bugs": {
-    "url": "https://github.com/docchipl/cda-checking/issues"
+    "url": "https://github.com/docchipl/players-checking/issues"
   },
-  "homepage": "https://github.com/docchipl/cda-checking#readme",
+  "homepage": "https://github.com/docchipl/players-checking#readme",
   "keywords": [
     "anime",
     "poland",
