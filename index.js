@@ -25,11 +25,3 @@ export default function runScript({ source }) {
       };
   }
 }
-
-setInterval(async () => {
-
-  console.log(await runScript({
-    source: "https://video.sibnet.ru/shell.php?videoid=5128164"
-  }))
-  
-}, 2 * 1000);

@@ -1,70 +1,88 @@
-# @docchi/cda-checking
+# @docchi/track-player
 
-Simple checking package, if cda video is deleted or available.
+A Node.js package to check if players have been removed from video-sharing platforms like CDA, Google Drive, and Sibnet.
 
-![Okładka](https://github.com/docchipl/.github/assets/34755589/9b14bb52-08ba-4a45-992b-fc2e10cf226a)
+![Okładka](https://i.ibb.co/4VfzDT4/1500x500.png)
 
-## Kontakt
+## Contact
 
 - GitHub: [github.com/ankordii][github]
-- Website: [https://docchi.pl/][site]
+- Website: [https://docchi.pl/contact][site]
 - E-mail: pomoc@docchi.pl
 
 ## Installation
 
 [Node.js](https://nodejs.org/en/) required
+
 ```bash
-npm install @docchi/cda-checking
+npm install @docchi/track-player
 ```
 
 ## How to use
 
 <sub>Don't forget to add
+
 ```json
 "type": "module"
 ```
-to *package.json*
+
+to yours _package.json_
 </sub>
 
-How to use: 
+<br/>
 
-<sub>Examples of ID</sub>
-- EMBED URL - **https://ebd.cda.pl/620x395/115890987a**
-- VIDEO URL - **https://www.cda.pl/video/115890987a**
-- JUST ID - **115890987a**
+Supported URL's
 
-Example: 
+- CDA - **https://ebd.cda.pl/620x395/115890987a**
+- CDA - **https://www.cda.pl/video/115890987a**
+
+- GOOGLE DRIVE - **https://drive.google.com/file/d/0BxZF0Ie-2NRsUjhld2FvYzdsWms/view**
+- GOOGLE DRIVE - **https://drive.google.com/file/d/0BxZF0Ie-2NRsUjhld2FvYzdsWms/preview**
+
+- SIBNET - **https://video.sibnet.ru/shell.php?videoid=1546878**
+
+Example:
 
 ```js
-import checkPlayer from "@docchi/cda-checking";
+import Track from "@docchi/track-player";
 
-console.log(await 
-  checkPlayer("https://www.cda.pl/video/115890987a")
-)
+console.log(
+  await Track({
+    source: "https://video.sibnet.ru/shell.php?videoid=5128164",
+  })
+);
 ```
 
 If available
+
 ```json
 {
-    "status": 200, 
-    "message": "Source exists" 
+  "status": 200,
+  "message": "Source exists"
 }
 ```
+
 # Codes
 
-- 500 - Something went wrong!
-- 410 - Source removed by administrators.
+- 501 - Not supported platform.
+- 500 - Something went wrong.
 
-- 200 - Source exists
-- 206 - Page loaded, but couldn't verify if source exists
+- 410 - Source removed by administrators.
+- 429 - Too Many Requests.
+- 403 - Request access only video.
+
+- 200 - Source exists.
+- 206 - Page loaded, but couldn't verify if source exists.
 
 # Support
+
 <b>IMPORTANT</b>: Help me beeing efficient, please! I am developing in my free time for no money. Contribute to the project by posting complete, structured and helpful issues which I can reproduce quickly without asking for missing information.
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://buycoffee.to/docchi)
 
 # License
-[MIT](https://github.com/docchipl/cda-checking/blob/main/LICENSE)
+
+[MIT](https://github.com/docchipl/track-player/blob/main/LICENSE)
 
 [github]: https://github.com/ankordii
 [site]: https://docchi.pl/

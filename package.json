@@ -1,29 +1,37 @@
 {
-  "name": "@docchi/players-checking",
-  "version": "1.0.8",
-  "description": "Simple checking package, if cda video is deleted or available",
+  "name": "@docchi/track-player",
+  "version": "2.0.0",
+  "description": "A Node.js package to check if players have been removed from video-sharing platforms like CDA, Google Drive, and Sibnet.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/docchipl/players-checking.git"
+    "url": "git+https://github.com/docchipl/track-player.git"
   },
   "dependencies": {
-    "axios": "^0.27.2",
-    "jsdom": "^20.0.0",
-    "unraw": "^2.0.1"
+    "axios": "^1.4.0",
+    "jsdom": "^22.1.0"
   },
   "type": "module",
   "bugs": {
-    "url": "https://github.com/docchipl/players-checking/issues"
+    "url": "https://github.com/docchipl/track-player/issues"
   },
-  "homepage": "https://github.com/docchipl/players-checking#readme",
+  "homepage": "https://github.com/docchipl/track-player#readme",
   "keywords": [
     "anime",
     "poland",
     "cda",
+    "sibnet",
+    "google drive",
+    "gdrive",
+    "gd",
+    "docci",
+    "dochi",
     "docchi",
     "pl",
-    "napisy"
+    "napisy",
+    "player",
+    "checker",
+    "video"
   ],
   "author": "3xanax",
   "license": "MIT"
