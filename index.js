@@ -1,12 +1,27 @@
-import {CDAChecking} from "./modules/index.js";
-import LinkToPlayer from "./functions/LinkToPlayer.js";
+import { ServiceCDA, ServiceGDRIVE, ServiceSIBNET } from "./services/index.js";
+import CompilePlayerData from "./utils/CompileEpisodeData.js";
 
-function checkPlayer(id){
-  const clearID = LinkToPlayer(id);
+export default function runScript({ source }) {
+  const determinatePlayer = CompilePlayerData(source);
 
-  const data = CDAChecking(clearID);
+  if ([501, 400].includes(determinatePlayer.code)) {
+    return console.log(code.message);
+  }
 
-  return(data);
-
+  switch (determinatePlayer.hosting) {
+    case "cda": {
+      return ServiceCDA(determinatePlayer.player_id);
+    }
+    case "gdrive": {
+      return ServiceGDRIVE(determinatePlayer.player_id);
+    }
+    case "sibnet": {
+      return ServiceSIBNET(determinatePlayer.player_id);
+    }
+    default:
+      return {
+        status: 501,
+        message: "Not supported.",
+      };
+  }
 }
-export default checkPlayer;
