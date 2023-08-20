@@ -68,7 +68,7 @@ If available
 
 <b>IMPORTANT</b>: Help me beeing efficient, please! I am developing in my free time for no money. Contribute to the project by posting complete, structured and helpful issues which I can reproduce quickly without asking for missing information.
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://buycoffee.to/docchi)
+[![buycoffee.to](https://i.ibb.co/X8djLyj/Group-37.png)](https://buycoffee.to/docchi)
 
 # License
 
