@@ -10,4 +10,3 @@ var gdrive_1 = require("./gdrive");
 Object.defineProperty(exports, "ServiceGDRIVE", { enumerable: true, get: function () { return __importDefault(gdrive_1).default; } });
 var sibnet_1 = require("./sibnet");
 Object.defineProperty(exports, "ServiceSIBNET", { enumerable: true, get: function () { return __importDefault(sibnet_1).default; } });
-//# sourceMappingURL=index.js.map

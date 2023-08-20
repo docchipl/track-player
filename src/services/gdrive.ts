@@ -13,10 +13,12 @@ export default async function ServiceGDRIVE(
         },
       }
     );
+
     const {
       status,
       request: { host },
     } = response;
+
     if (status === 200 && host && host === "accounts.google.com") {
       return {
         status: 403,
@@ -30,26 +32,45 @@ export default async function ServiceGDRIVE(
         message: "Source exists.",
       };
     }
+
+    return {
+      status: 500,
+      message: "Something went wrong!",
+      message_extra: "Skip this player or try again in couple seconds.",
+    };
   } catch (error) {
-    const { response } = error;
+    if (axios.isAxiosError(error)) {
+      if (!error.response) {
+        return { status: 429, message: "Too Many Requests!" };
+      }
 
-    if (response.status === 403) {
-      return {
-        status: 410,
-        message: "Source removed by administrators (Legal Request).",
-      };
-    }
+      const { response } = error;
 
-    if (response.status === 404) {
+      if (response.status === 403) {
+        return {
+          status: 410,
+          message: "Source removed by administrators (Legal Request).",
+        };
+      }
+
+      if (response.status === 404) {
+        return {
+          status: 410,
+          message: "Source removed by administrators.",
+        };
+      }
+
       return {
-        status: 410,
-        message: "Source removed by administrators.",
+        status: 500,
+        message: "Something went wrong!",
+        message_extra: "Skip this player or try again in couple seconds.",
       };
     }
 
     return {
       status: 500,
       message: "Something went wrong!",
+      message_extra: "Skip this player or try again in couple seconds.",
     };
   }
 }

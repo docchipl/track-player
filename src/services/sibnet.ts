@@ -25,24 +25,35 @@ export default async function ServiceSIBNET(
     if (!dom.window.document.querySelector("#player_container")) {
       return {
         status: 410,
-        message: "Source removed by administrators",
+        message: "Source removed by administrators.",
       };
     }
 
     return {
       status: 200,
-      message: "Source exists",
+      message: "Source exists.",
     };
   } catch (error) {
-    const { response } = error;
+    if (axios.isAxiosError(error)) {
+      if (!error.response || !error.response.data) {
+        return { status: 429, message: "Too Many Requests!" };
+      }
 
-    if (response.status === 404) {
+      const { response } = error;
+
+      if (response.status === 404) {
+        return {
+          status: 410,
+          message: "Source removed by administrators.",
+        };
+      }
+
       return {
-        status: 410,
-        message: "Source removed by administrators",
+        status: 500,
+        message: "Something went wrong!",
+        message_extra: "Skip this player or try again in couple seconds.",
       };
     }
-
     return {
       status: 500,
       message: "Something went wrong!",

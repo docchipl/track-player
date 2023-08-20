@@ -41,35 +41,41 @@ export default async function ServiceCDA(
       message: "Page loaded, but couldn't verify if source exists.",
     };
   } catch (error) {
-    if (
-      !error.response ||
-      (error.response && !error.response.data) ||
-      !error.response.data
-    ) {
-      return { status: 429, message: "Too Many Requests!" };
-    }
+    if (axios.isAxiosError(error)) {
+      if (!error.response || !error.response.data) {
+        return { status: 429, message: "Too Many Requests!" };
+      }
 
-    const dom = new JSDOM(error.response.data, { virtualConsole });
-    const items = dom.window.document.querySelector("body p");
+      const dom = new JSDOM(error.response.data, { virtualConsole });
+      const items = dom.window.document.querySelector("body p");
 
-    if (!items) {
+      if (!items) {
+        return {
+          status: 500,
+          message: "Something went wrong!",
+          message_extra: "Skip this player or try again in couple seconds.",
+        };
+      }
+
+      if (items.textContent && items.textContent.includes("usunięty")) {
+        return {
+          status: 410,
+          message: "Source removed by administrators.",
+        };
+      }
+
       return {
         status: 500,
         message: "Something went wrong!",
         message_extra: "Skip this player or try again in couple seconds.",
       };
-    }
 
-    if (items.textContent.includes("usunięty")) {
-      return {
-        status: 410,
-        message: "Source removed by administrators.",
-      };
     }
 
     return {
       status: 500,
       message: "Something went wrong!",
+      message_extra: "Skip this player or try again in couple seconds.",
     };
   }
 }

@@ -1,8 +1,15 @@
 {
   "name": "@docchi/track-player",
-  "version": "2.0.1-alpha.0",
+  "version": "2.0.1-alpha.1",
   "description": "A Node.js package to check if players have been removed from video-sharing platforms like CDA, Google Drive, and Sibnet.",
-  "main": "dist/app.js",
+  "main": "dist/cjs/app.js",
+  "module": "dist/mjs/app.js",
+  "exports": {
+    ".": {
+      "import": "./dist/mjs/app.js",
+      "require": "./dist/cjs/app.js"
+    }
+  },
   "files": [
     "dist/**/*"
   ],
@@ -11,8 +18,7 @@
     "url": "git+https://github.com/docchipl/track-player.git"
   },
   "scripts": {
-    "dev": "nodemon src/app.ts",
-    "start": "tsc && node dist/app.js",
+    "build": "rm -fr dist/* && tsc -p tsconfig.json && tsc -p tsconfig-cjs.json && bash ./fixup.sh",
     "lint": "eslint . --ext .ts"
   },
   "bugs": {
@@ -47,8 +53,6 @@
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@typescript-eslint/parser": "^6.4.0",
     "eslint": "^8.47.0",
-    "nodemon": "^3.0.1",
-    "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
   }
 }

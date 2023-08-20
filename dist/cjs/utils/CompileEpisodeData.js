@@ -80,4 +80,3 @@ function CompilePlayerData(player) {
     };
 }
 exports.default = CompilePlayerData;
-//# sourceMappingURL=CompileEpisodeData.js.map

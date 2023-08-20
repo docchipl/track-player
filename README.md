@@ -53,12 +53,13 @@ If available
 
 # Codes
 
-- 501 - Not supported platform.
+- 501 - Unsupported service.
 - 500 - Something went wrong.
 
 - 410 - Source removed by administrators.
 - 429 - Too Many Requests.
 - 403 - Request access only video.
+- 409 - Destructuring failed: Unable to extract 'id' from the URL string.
 
 - 200 - Source exists.
 - 206 - Page loaded, but couldn't verify if source exists.

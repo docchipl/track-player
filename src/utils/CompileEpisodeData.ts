@@ -1,4 +1,18 @@
-import { URL } from "../interfaces/URL";
+interface URL {
+  hash: string;
+  host: string;
+  hostname: string;
+  href: string;
+  readonly origin: string;
+  password: string;
+  pathname: string;
+  port: string;
+  protocol: string;
+  search: string;
+  username: string;
+  toString(): string;
+  searchParams: any;
+}
 
 export default function CompilePlayerData(player: string) {
   if (player.includes("https://") || player.includes("http://")) {

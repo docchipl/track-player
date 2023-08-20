@@ -1,4 +1,3 @@
-import { ResponseSource } from "interfaces/ResponseSource";
 import { ServiceCDA, ServiceGDRIVE, ServiceSIBNET } from "./services/index";
 import CompilePlayerData from "./utils/CompileEpisodeData";
 
@@ -9,14 +8,26 @@ interface DeterminateInterface {
   player_id?: string;
   message?: string;
 }
+interface ResponseSource {
+  status: number;
+  message: string;
+  message_extra?: string;
+}
 
-export default async function runScript({ source }): Promise<ResponseSource> {
+export default async function runScript({ source }: {source: string}): Promise<ResponseSource> {
   const dP: DeterminateInterface = CompilePlayerData(source);
 
   if ([501, 400].includes(dP.code)) {
     return {
       status: dP.code,
-      message: dP.message,
+      message: dP.message || "Error: Code description not found.",
+    };
+  }
+
+  if(!dP.player_id){
+    return {
+      status: 409,
+      message: "Destructuring failed: Unable to extract 'id' from the URL string.",
     };
   }
 
@@ -33,7 +44,7 @@ export default async function runScript({ source }): Promise<ResponseSource> {
     default:
       return {
         status: 501,
-        message: "Not supported.",
+        message: "Unsupported service.",
       };
   }
 }
