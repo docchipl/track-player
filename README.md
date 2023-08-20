@@ -18,17 +18,6 @@ A Node.js package to check if players have been removed from video-sharing platf
 npm install @docchi/track-player
 ```
 
-## How to use
-
-<sub>Don't forget to add
-
-```json
-"type": "module"
-```
-
-to yours _package.json_
-</sub>
-
 <br/>
 
 Supported URL's

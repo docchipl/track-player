@@ -6,7 +6,7 @@ name: 🚀 release
 on:
   push:
     branches:
-    - main
+    - typescript
 
 jobs:
     release:
@@ -21,6 +21,6 @@ jobs:
                   node-version: '16.x'
                   registry-url: https://registry.npmjs.org
             - name: 🚀 publish
-              run: npm publish --access public
+              run: npm publish --tag typescript --access public
               env:
                   NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
